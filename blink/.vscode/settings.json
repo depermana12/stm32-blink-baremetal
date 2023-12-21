@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+      "scb.h": "c",
+      "flash.h": "c",
+      "systick.h": "c",
+      "timer.h": "c",
+      "api-io.h": "c",
+      "vector.h": "c",
+      "api-uart.h": "c",
+      "pins.h": "c",
+      "sync.h": "c",
+      "ring-buffer.h": "c",
+      "flash_common_all.h": "c"
+    },
+    "cortex-debug.armToolchainPath": "/usr/share/gcc-arm-none-eabi-10.3-2021.10/bin/",
+    "cortex-debug.stlinkPath": "/opt/st/stm32cubeide_1.14.0/plugins/com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.linux64_2.1.100.202310302101/tools/bin/ST-LINK_gdbserver"
+  }
