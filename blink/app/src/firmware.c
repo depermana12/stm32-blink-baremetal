@@ -10,21 +10,14 @@ int main(void) {
 	gpio_init();
 	timer_init();
 
-	uint32_t start_time = system_get_ticks();
 	uint32_t blink_time = system_get_ticks();
-	float duty_cycle = 0.0f;
 
-	timer_pwm_set_duty_cycle(duty_cycle);
 	
 	while (1) {
-		if (system_get_ticks() - start_time >= FADE_STEP){
-			duty_cycle += 1.0f;
-			if (duty_cycle > 100.0f) {
-               duty_cycle = 0.0f;
-            } 
-			timer_pwm_set_duty_cycle(duty_cycle);
-			start_time = system_get_ticks();
-		}
+		
+			
+		
+		
 
 		// the use of below prototype is non-blocking delay
 		// its check time 
