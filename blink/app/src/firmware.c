@@ -1,3 +1,5 @@
+
+
 #include "core/system.h"
 #include "core/gpio.h"
 #include "core/timer.h"
@@ -9,34 +11,34 @@ int main(void) {
 	system_init();
 	gpio_init();
 	timer_init();
-
+    
 	uint32_t start_time = system_get_ticks();
-	uint32_t blink_time = system_get_ticks();
 	float duty_cycle = 0.0f;
-
+	float max_duty_cycle = 100.0f;
+	float min_duty_cycle = 0.0f;
+	bool count_up = true;
 	timer_pwm_set_duty_cycle(duty_cycle);
 	
 	while (1) {
-		if (system_get_ticks() - start_time >= FADE_STEP){
-			duty_cycle += 1.0f;
-			if (duty_cycle > 100.0f) {
-               duty_cycle = 0.0f;
-            } 
-			timer_pwm_set_duty_cycle(duty_cycle);
-			start_time = system_get_ticks();
-		}
 
-		// the use of below prototype is non-blocking delay
-		// its check time 
-		if (system_get_ticks() -  blink_time >= LED_DELAY){
-			gpio_toggle(GPIO_PORTC, GPIO_PIN_BLINK);
-			blink_time = system_get_ticks();
+    if (system_get_ticks() - start_time >= 10) {
+		if (count_up) {
+		duty_cycle += 1.0f;
+		if (duty_cycle > max_duty_cycle){
+			duty_cycle = max_duty_cycle;
+			count_up = false;
+		   } 
+		} else {
+			duty_cycle -= 1.0f;
+			if (duty_cycle < min_duty_cycle){
+			duty_cycle = min_duty_cycle;
+			count_up = true;
+		   } 
 		}
-		    // this code is blocking delay
-			// it wait until the delay time reach
-			//gpio_toggle(GPIO_PORTC, GPIO_PIN_BLINK);
-			//system_delay (100);
-
+      timer_pwm_set_duty_cycle(duty_cycle);	
+	  start_time = system_get_ticks();
+	}
+	
 	}
 	// never return
 	return 0;
