@@ -16,4 +16,4 @@ src/firmware.o: src/firmware.c inc/core/system.h inc/common-defines.h \
  ../libopencm3/include/libopencm3/stm32/common/gpio_common_f24.h \
  ../libopencm3/include/libopencm3/stm32/common/gpio_common_f234.h \
  ../libopencm3/include/libopencm3/stm32/common/gpio_common_all.h \
- inc/core/timer.h
+ inc/core/timer.h inc/core/uart.h

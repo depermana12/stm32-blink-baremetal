@@ -57,6 +57,7 @@ OBJS		+= $(SRC_DIR)/$(BINARY).o
 OBJS		+= $(SRC_DIR)/core/system.o
 OBJS		+= $(SRC_DIR)/core/gpio.o
 OBJS		+= $(SRC_DIR)/core/timer.o
+OBJS		+= $(SRC_DIR)/core/uart.o
 
 ###############################################################################
 # C flags
